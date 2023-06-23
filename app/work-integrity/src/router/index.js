@@ -14,9 +14,9 @@ const router = createRouter({
           component: Home
         },
         {
-          path: '/sign-in',
-          name: 'Cadastrar',
-          component: () => import('../views/Cadastrar.vue')
+          path: '/courses',
+          name: 'Courses',
+          component: () => import('../views/Courses.vue')
         }
       ]
     },
@@ -25,8 +25,8 @@ const router = createRouter({
       component: () => import('../layouts/Blank.vue'),
       children: [
         {
-          path: '/login',
-          name: 'Login',
+          path: '/sign-in',
+          name: 'Sign-in',
           component: () => import('../views/Login.vue')
         }
       ]

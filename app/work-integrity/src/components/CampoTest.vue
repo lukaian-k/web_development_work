@@ -9,7 +9,7 @@ let num = ref(0)
 </script>
 
 <template>
-  <button @click="num++">{{ num }}</button>
+  <button class="default-btn" @click="num++">{{ num }}</button>
 
   <form action="" method="post">
     <h2>{{ msg }}</h2>

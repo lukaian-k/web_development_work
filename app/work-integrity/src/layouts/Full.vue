@@ -1,21 +1,29 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
 
-export default {}
+import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
+
+export default {
+    name: 'Full',
+    components: {
+        Header,
+        Footer
+    }
+}
 </script>
 
 <template>
     <v-app>
-        <v-app-bar app>
-            <RouterLink to="/">Home</RouterLink>
-            <RouterLink to="/sign-in">Cadastrar</RouterLink>
-        </v-app-bar>
+        <Header />
 
         <v-main>
             <v-container>
                 <RouterView />
             </v-container>
         </v-main>
+
+        <Footer />
     </v-app>
 </template>
 
