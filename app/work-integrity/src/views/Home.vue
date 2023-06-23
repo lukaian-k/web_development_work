@@ -23,20 +23,24 @@ export default {
     </v-list>
 </template>
 
-<style scoped>
-#btn {
-    background-color: var(--highlights);
-    margin: 15px;
-}
+<style scoped lang="scss">
+$highlights: var(--highlights);
+$secondary-elements: var(--secondary-elements);
+$background: var(--background);
 
-#btn:hover {
-    background-color: var(--secondary-elements);
-    transform: scale(1.02);
-    transition: 200ms;
-    border: none;
+#btn {
+    background-color: $highlights;
+    margin: 15px;
+
+    &:hover {
+        background-color: $secondary-elements;
+        transform: scale(1.02);
+        transition: 200ms;
+        border: none;
+    }
 }
 
 #text {
-    color: var(--background);
+    color: $background;
 }
 </style>

@@ -4,7 +4,7 @@ import { createVuetify } from 'vuetify'
 import App from './App.vue'
 import router from './router'
 
-import './style.css'
+import './style.scss'
 import 'vuetify/styles'
 import * as directives from 'vuetify/directives'
 import * as components from 'vuetify/components'
