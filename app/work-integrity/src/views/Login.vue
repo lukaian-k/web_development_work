@@ -1,10 +1,10 @@
 <script setup>
-import CampoTest from '../components/CampoTest.vue'
+import Form from '../components/Login/Form.vue'
 </script>
 
 <template>
   <main>
     <h1>Login</h1>
-    <CampoTest msg="Aluno" />
+    <Form msg="Aluno" />
   </main>
 </template>
