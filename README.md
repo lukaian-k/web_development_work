@@ -22,6 +22,15 @@ Liste todos os requisitos necessários para executar o projeto. Isso pode inclui
 
 Forneça um guia passo a passo para ajudar os usuários a instalarem e configurarem seu projeto em suas próprias máquinas. Certifique-se de incluir todos os comandos e instruções necessários.
 
+**_dir:_** *root/app/work-integrity*
+
+```bash
+npm install
+```
+```bash
+npm run dev
+```
+
 ## Uso
 
 Explique como usar o seu projeto. Forneça exemplos e comandos para demonstrar as principais funcionalidades e casos de uso.

@@ -16,7 +16,27 @@ const router = createRouter({
         {
           path: '/courses',
           name: 'Courses',
-          component: () => import('../views/Courses.vue')
+          component: () => import('../views/Courses/Courses.vue')
+        },
+        {
+          path: '/professors',
+          name: 'Professors',
+          component: () => import('../views/Professors/Professors.vue')
+        },
+        {
+          path: '/schedules',
+          name: 'Schedules',
+          component: () => import('../views/Schedules/Schedules.vue')
+        },
+        {
+          path: '/classrooms',
+          name: 'Classrooms',
+          component: () => import('../views/Classrooms/Classrooms.vue')
+        },
+        {
+          path: '/allocation',
+          name: 'Allocation',
+          component: () => import('../views/Allocation/Allocation.vue')
         }
       ]
     },

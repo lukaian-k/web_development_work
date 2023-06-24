@@ -17,7 +17,6 @@ defineProps({
 
 <style scoped>
 #h-x {
-    font-size: 3.2em;
     line-height: 1.1;
     color: var(--secondary-elements);
     margin-bottom: 20px;
