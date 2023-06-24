@@ -6,9 +6,11 @@ import Form from '../components/Login/Form.vue'
 <template>
   <div class="login-page">
     <Header />
+
     <div class="login-form-container">
       <Form />
     </div>
+
     <div class="background"></div>
   </div>
 </template>

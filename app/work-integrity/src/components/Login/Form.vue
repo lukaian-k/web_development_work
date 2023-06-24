@@ -1,25 +1,68 @@
-<script setup></script>
+<script setup>
+import { RouterLink } from 'vue-router'
+import { ref } from 'vue'
+
+let form = ref(false)
+let id = ref(null)
+let password = ref(null)
+let visible = ref(false)
+let loading = ref(false)
+
+function onSubmit() {
+  if (!this.form) return
+
+  this.loading = true
+  setTimeout(() => (this.loading = false), 2000)
+}
+
+function required(v) {
+  return !!v || 'Campo nessesário'
+}
+</script>
 
 <template>
-  <div class="login-form">
-    <h2>Login</h2>
-    <p>test</p>
-    <!-- Seu formulário de login aqui -->
-  </div>
+  <v-form class="empty-form" v-model=form @submit.prevent=onSubmit>
+    <div id="title">
+      <h1>Bem-vindo!</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+    </div>
+
+    <v-text-field v-model=id type="input" :readonly=loading :rules=[required] label="ID" variant="outlined"
+      placeholder="Insira seu código de identificação" density="compact" />
+
+    <v-text-field v-model=password :type="visible ? 'text' : 'password'" @click:append-inner="visible = !visible"
+      :readonly=loading :rules=[required] label="Password" variant="outlined" hint="Insira sua senha" density="compact"
+      :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'" />
+
+    <br>
+
+    <v-btn :disabled=!form :loading=loading block color=var(--highlights) type="submit" variant="elevated" rounded="xl"
+      size="large">
+      <p id="text-send">Entrar</p>
+    </v-btn>
+
+    <!-- <br><br>
+    <p>
+      Não tem uma conta?
+      <RouterLink to="/">Sign in</RouterLink>
+    </p> -->
+  </v-form>
 </template>
 
 <style scoped lang="scss">
-$background: var(--background);
+#title {
+  margin-bottom: 2.5em;
 
-.login-form {
-  background-color: $background;
-  border-radius: 4px;
-  padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  h1 {
+    margin-bottom: .1em;
+  }
 }
 
-h2 {
-  margin-bottom: 1.5rem;
-  text-align: center;
+.empty-form {
+  min-width: 60%;
+}
+
+#text-send {
+  color: var(--background);
 }
 </style>

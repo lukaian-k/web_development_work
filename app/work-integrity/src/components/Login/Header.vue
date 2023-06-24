@@ -8,9 +8,11 @@ import { RouterLink } from 'vue-router'
             <img id="app-bar-icon" src="../../assets/icon-ufc.svg" alt="icone da UFC">
         </RouterLink>
 
-        <span class="sign-up">
-            <v-btn variant="outlined" rounded="xl">Sign Up</v-btn>
-        </span>
+        <!-- <span class="sign-up">
+            <RouterLink to="/">
+                <v-btn color=var(--background) variant="outlined" rounded="xl">Sign Up</v-btn>
+            </RouterLink>
+        </span> -->
     </nav>
 </template>
 
