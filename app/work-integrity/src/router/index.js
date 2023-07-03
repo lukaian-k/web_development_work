@@ -34,6 +34,11 @@ const router = createRouter({
           component: () => import('../views/Classrooms/Classrooms.vue')
         },
         {
+          path: '/classrooms/register',
+          name: 'Register Classrooms',
+          component: () => import('../views/Classrooms/Register.vue')
+        },
+        {
           path: '/allocation',
           name: 'Allocation',
           component: () => import('../views/Allocation/Allocation.vue')
@@ -48,6 +53,11 @@ const router = createRouter({
           path: '/sign-in',
           name: 'Sign-in',
           component: () => import('../views/Login.vue')
+        },
+        {
+          path: '/development-page',
+          name: 'Development Page',
+          component: () => import('../views/DevelopmentPage.vue')
         }
       ]
     }
