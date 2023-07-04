@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router'
     <v-app>
         <v-container>
             <Title hType="h1" text="Sala de Aula" />
-            <v-row class="options">
+            <div class="options">
                 <v-col cols="12" sm="6" md="4">
                     <RouterLink to="/classrooms/register">
                         <v-card class="option-card">
@@ -22,7 +22,7 @@ import { RouterLink } from 'vue-router'
                         </v-card>
                     </RouterLink>
                 </v-col>
-            </v-row>
+            </div>
         </v-container>
     </v-app>
 </template>
@@ -32,7 +32,11 @@ $background: var(--background);
 $background-gray: var(--background-gray);
 
 .options {
-    margin-top: 3rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .option-card {

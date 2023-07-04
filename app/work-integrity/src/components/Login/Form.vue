@@ -8,11 +8,23 @@ let password = ref(null)
 let visible = ref(false)
 let loading = ref(false)
 
-function onSubmit() {
+async function onSubmit() {
   if (!this.form) return
 
   this.loading = true
   setTimeout(() => (this.loading = false), 2000)
+
+  try {
+    const response = await this.$http.post('http://localhost:8000/api/sign-in/', {
+      id_user: this.id,
+      password: this.password,
+    })
+
+    alert(response)
+
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 function required(v) {
