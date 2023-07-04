@@ -21,6 +21,8 @@ class UserManager(BaseUserManager):
 
         return user
 
+#usuário personalizado para se adaptar as necessidades do aplicativo
+
 class User(AbstractBaseUser):
     id_user = models.CharField(max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
@@ -32,3 +34,20 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.id_user
+
+class SaladeAula(models.Model):
+    #Armazenar o numero da sala, capacidade, bloco
+    number = models.CharField(max_length=10)
+    capacity = models.PositiveIntegerField()
+    bloco = models.CharField(max_length=100)
+    DispositivosEletronicos = models.ManyToManyField('DispositivosEletronicos', blank=True)
+
+    def __str__(self):
+        return self.number
+
+class DispositivosEletronicos(models.Model):
+    nome = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nome
+

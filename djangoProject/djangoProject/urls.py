@@ -16,9 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from core.views import (
+    ClassroomCreate,
+)
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('classrooms/create/', ClassroomCreate.as_view(), name='classroom_create'),
+    #path('api/sign-in', views.login_user, name='login'),
+
 ]
