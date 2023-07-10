@@ -16,7 +16,7 @@ import { RouterLink } from 'vue-router'
                     </RouterLink>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                    <RouterLink to="/development-page">
+                    <RouterLink to="/professors/view">
                         <v-card class="option-card">
                             <v-card-title>Visualizar Professores</v-card-title>
                         </v-card>

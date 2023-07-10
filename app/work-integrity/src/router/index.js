@@ -1,47 +1,36 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
+import FullLayout from '../layouts/Full.vue'
+import BlankLayout from '../layouts/Blank.vue'
+
 import Home from '../views/Home.vue'
+import Professors from './professors'
+import Classrooms from './classrooms'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      component: () => import('../layouts/Full.vue'),
+      component: FullLayout,
       children: [
         {
           path: '',
           name: 'Home',
           component: Home
         },
+        ...Professors,
+        ...Classrooms,
         {
           path: '/courses',
           name: 'Courses',
           component: () => import('../views/Courses/Courses.vue')
         },
         {
-          path: '/professors',
-          name: 'Professors',
-          component: () => import('../views/Professors/Professors.vue')
-        },
-        {
-          path: '/professors/register',
-          name: 'Register Professors',
-          component: () => import('../views/Professors/Register.vue')
-        },
-        {
           path: '/schedules',
           name: 'Schedules',
           component: () => import('../views/Schedules/Schedules.vue')
-        },
-        {
-          path: '/classrooms',
-          name: 'Classrooms',
-          component: () => import('../views/Classrooms/Classrooms.vue')
-        },
-        {
-          path: '/classrooms/register',
-          name: 'Register Classrooms',
-          component: () => import('../views/Classrooms/Register.vue')
         },
         {
           path: '/allocation',
@@ -52,7 +41,7 @@ const router = createRouter({
     },
     {
       path: '/',
-      component: () => import('../layouts/Blank.vue'),
+      component: BlankLayout,
       children: [
         {
           path: '/sign-in',
