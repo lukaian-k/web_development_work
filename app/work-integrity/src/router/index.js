@@ -6,6 +6,7 @@ import BlankLayout from '../layouts/Blank.vue'
 import Home from '../views/Home.vue'
 import Professors from './professors'
 import Classrooms from './classrooms'
+import Allocation from './allocation'
 
 
 const router = createRouter({
@@ -22,6 +23,7 @@ const router = createRouter({
         },
         ...Professors,
         ...Classrooms,
+        ...Allocation,
         {
           path: '/courses',
           name: 'Courses',
@@ -31,11 +33,6 @@ const router = createRouter({
           path: '/schedules',
           name: 'Schedules',
           component: () => import('../views/Schedules/Schedules.vue')
-        },
-        {
-          path: '/allocation',
-          name: 'Allocation',
-          component: () => import('../views/Allocation/Allocation.vue')
         }
       ]
     },
