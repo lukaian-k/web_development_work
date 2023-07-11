@@ -7,26 +7,126 @@
         "EC"
     ],
     "Professores": [
-        "Alexandre Matos",
-        "Anna Beatriz",
-        "Bonfim Amaro",
-        "Concursado",
-        "Eurinardo",
-        "Marcos Vinícius",
-        "Jacilane",
-        "José Osvaldo",
-        "Josemeire Alves",
-        "Marcio Costa",
-        "Marília Soares",
-        "Markos Oliveira",
-        "Pablo Soares",
-        "Patrícia",
-        "Rafael Fernandes",
-        "Tatiane Fernandes",
-        "José Gleison",
-        "Gastão Silves",
-        "Rosineide Fernando",
-        "Anderson Feitoza"
+        {
+            "nome": "Alexandre Matos",
+            "dep": 2,
+            "cod": 2020,
+            "formacao": "Engenharia de Software"
+        },
+        {
+            "nome": "Anna Beatriz",
+            "dep": 3,
+            "cod": 3030,
+            "formacao": "Ciência da Computação"
+        },
+        {
+            "nome": "Bonfim Amaro",
+            "dep": 4,
+            "cod": 4040,
+            "formacao": "Engenharia Elétrica"
+        },
+        {
+            "nome": "Concursado",
+            "dep": 5,
+            "cod": 5050,
+            "formacao": "Engenharia de Produção"
+        },
+        {
+            "nome": "Eurinardo",
+            "dep": 6,
+            "cod": 6060,
+            "formacao": "Engenharia Civil"
+        },
+        {
+            "nome": "Marcos Vinícius",
+            "dep": 7,
+            "cod": 7070,
+            "formacao": "Engenharia Química"
+        },
+        {
+            "nome": "Jacilane",
+            "dep": 8,
+            "cod": 8080,
+            "formacao": "Engenharia Mecânica"
+        },
+        {
+            "nome": "José Osvaldo",
+            "dep": 9,
+            "cod": 9090,
+            "formacao": "Engenharia de Alimentos"
+        },
+        {
+            "nome": "Josemeire Alves",
+            "dep": 10,
+            "cod": 101010,
+            "formacao": "Engenharia Ambiental"
+        },
+        {
+            "nome": "Marcio Costa",
+            "dep": 11,
+            "cod": 111111,
+            "formacao": "Engenharia de Telecomunicações"
+        },
+        {
+            "nome": "Marília Soares",
+            "dep": 12,
+            "cod": 121212,
+            "formacao": "Engenharia de Controle e Automação"
+        },
+        {
+            "nome": "Markos Oliveira",
+            "dep": 13,
+            "cod": 131313,
+            "formacao": "Engenharia de Petróleo"
+        },
+        {
+            "nome": "Pablo Soares",
+            "dep": 14,
+            "cod": 141414,
+            "formacao": "Engenharia de Materiais"
+        },
+        {
+            "nome": "Patrícia",
+            "dep": 15,
+            "cod": 151515,
+            "formacao": "Engenharia Biomédica"
+        },
+        {
+            "nome": "Rafael Fernandes",
+            "dep": 16,
+            "cod": 161616,
+            "formacao": "Engenharia Agrícola"
+        },
+        {
+            "nome": "Tatiane Fernandes",
+            "dep": 17,
+            "cod": 171717,
+            "formacao": "Engenharia de Minas"
+        },
+        {
+            "nome": "José Gleison",
+            "dep": 18,
+            "cod": 181818,
+            "formacao": "Engenharia Aeroespacial"
+        },
+        {
+            "nome": "Gastão Silves",
+            "dep": 19,
+            "cod": 191919,
+            "formacao": "Engenharia Nuclear"
+        },
+        {
+            "nome": "Rosineide Fernando",
+            "dep": 20,
+            "cod": 202020,
+            "formacao": "Engenharia Naval"
+        },
+        {
+            "nome": "Anderson Feitoza",
+            "dep": 21,
+            "cod": 212121,
+            "formacao": "Engenharia de Energia"
+        }
     ],
     "Blocos": [
         "1A",
