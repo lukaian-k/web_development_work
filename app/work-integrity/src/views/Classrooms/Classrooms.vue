@@ -1,28 +1,24 @@
 <script setup>
-import Title from '../../components/Title.vue';
-import { RouterLink } from 'vue-router'
+import Title from '../../components/Title.vue'
+import Menu from '../../components/Menu.vue'
+
+let items = [
+    {
+        title: "Cadastrar Sala de Aula",
+        router: "/classrooms/register"
+    },
+    {
+        title: "Visualizar Salas de Aula",
+        router: "/development-page"
+    }
+]
 </script>
 
 <template>
     <v-app>
         <v-container>
             <Title hType="h1" text="Sala de Aula" />
-            <div class="options">
-                <v-col cols="12" sm="6" md="4">
-                    <RouterLink to="/classrooms/register">
-                        <v-card class="option-card">
-                            <v-card-title>Cadastrar Sala de Aula</v-card-title>
-                        </v-card>
-                    </RouterLink>
-                </v-col>
-                <v-col cols="12" sm="6" md="4">
-                    <RouterLink to="/development-page">
-                        <v-card class="option-card">
-                            <v-card-title>Visualizar Salas de Aula</v-card-title>
-                        </v-card>
-                    </RouterLink>
-                </v-col>
-            </div>
+            <Menu :items="items" />
         </v-container>
     </v-app>
 </template>
