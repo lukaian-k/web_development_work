@@ -1,27 +1,24 @@
 <script setup>
-import Title from '../../components/Title.vue';
+import Title from '../../components/Title.vue'
+import Menu from '../../components/Menu.vue'
+
+let items = [
+    {
+        title: "Alocar Professores",
+        router: "/allocation/allocate"
+    },
+    {
+        title: "Visualizar Alocações",
+        router: "/allocation/view"
+    }
+]
 </script>
 
 <template>
     <v-app>
         <v-container>
             <Title hType="h1" text="Alocação" />
-            <div class="options">
-                <v-col cols="12" sm="6" md="4">
-                    <RouterLink to="/allocation/allocate">
-                        <v-card class="option-card">
-                            <v-card-title>Alocar Professores</v-card-title>
-                        </v-card>
-                    </RouterLink>
-                </v-col>
-                <v-col cols="12" sm="6" md="4">
-                    <RouterLink to="/allocation/view">
-                        <v-card class="option-card">
-                            <v-card-title>Visualizar Alocações</v-card-title>
-                        </v-card>
-                    </RouterLink>
-                </v-col>
-            </div>
+            <Menu :items="items" />
         </v-container>
     </v-app>
 </template>
