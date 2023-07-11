@@ -1,14 +1,16 @@
-from core.models import User, SaladeAula
 from django.contrib import admin
+from .models import Professor, Sala, Alocacao
 
-# Register your models here.
-class UserAdmin(admin.ModelAdmin):
-    list_display = ['id_user', 'is_active', 'is_staff']
 
-@admin.register(SaladeAula)
-class SaladeAulaAdmin(admin.ModelAdmin):
-    list_display = ['number', 'capacity', 'bloco']
+@admin.register(Professor)
+class ProfessorAdmin(admin.ModelAdmin):
+    pass
 
-admin.site.register(User, UserAdmin)
+@admin.register(Sala)
+class SalaAdmin(admin.ModelAdmin):
+    pass
 
+@admin.register(Alocacao)
+class AlocacaoAdmin(admin.ModelAdmin):
+    pass
 

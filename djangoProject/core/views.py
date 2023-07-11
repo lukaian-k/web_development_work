@@ -1,80 +1,90 @@
-#from django.shortcuts import render
-from django.contrib.auth import authenticate, login
-from django.http import JsonResponse
-from core.models import SaladeAula
-from django.views import View
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from django.shortcuts import get_object_or_404
+from .models import Professor, Sala, Alocacao
+from .serializers import (
+    LoginSerializer,
+    ProfessorSerializer,
+    SalaSerializer,
+    AlocacaoSerializer,
+)
 
 
-# Create your views here.
+@api_view(['POST'])
 def login_user(request):
-    if request.method == 'POST':
-        username = request.POST.get('id_user')
-        password = request.POST.get('password')
-
-        user = authenticate(request, id_user=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return JsonResponse({'message': 'Login successful'})
-        else:
-            # o retorno do status 401 é erro de retorno de autenticação, credenciais inválidas
-            return JsonResponse({'message': 'Invalid credential'}, status=401)
-    else:
-        # método solicitado inválido
-        return JsonResponse({'message': 'Invalid request method'}, status=400)
-
-class ClassroomCreate(View):
-    def post(self, request):
-        number = request.POST.get('number')
-        capacity = request.POST.get('capacity')
-        bloco = request.POST.get('block')
-
-        classroom = SaladeAula.objects.create(number=number, capacity=capacity, block=bloco)
-        data = {'number': classroom.number, 'capacity': classroom.capacity, 'block': classroom.block}
-        return JsonResponse(data, status=201)
-
-class ClassroomList(View):
-    def get(self, request):
-        classrooms = SaladeAula.objects.all()
-        data = [{'number': classroom.number, 'capacity': classroom.capacity, 'bloco': classroom.block} for classroom in classrooms]
-        return JsonResponse(data, safe=False)
+    serializer = LoginSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.validated_data.pop('password')
+        user = serializer.validated_data['id_user']
+        return Response({'message': 'Login successful'})
+    return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
 
 
-class ClassroomDetail(View):
-    def get(self, request, classroom_id):
-        try:
-            classroom = SaladeAula.objects.get(id=classroom_id)
-            data = {'number': classroom.number, 'capacity': classroom.capacity, 'bloco': classroom.block}
-            return JsonResponse(data)
-        except SaladeAula.DoesNotExist:
-            return JsonResponse({'message': 'Classroom not found'}, status=404)
+@api_view(['GET'])
+def professor_list(request):
+    professores = Professor.objects.all()
+    serializer = ProfessorSerializer(professores, many=True)
+    return Response(serializer.data)
 
 
-class ClassroomUpdate(View):
-    def post(self, request, classroom_id):
-        try:
-            classroom = SaladeAula.objects.get(id=classroom_id)
-        except SaladeAula.DoesNotExist:
-            return JsonResponse({'message': 'Classroom not found'}, status=404)
-
-        number = request.POST.get('number')
-        capacity = request.POST.get('capacity')
-        block = request.POST.get('block')
-
-        classroom.number = number
-        classroom.capacity = capacity
-        classroom.block = block
-        classroom.save()
-
-        data = {'number': classroom.number, 'capacity': classroom.capacity, 'block': classroom.block}
-        return JsonResponse(data)
+@api_view(['GET'])
+def professor_detail(request, pk):
+    professor = get_object_or_404(Professor, pk=pk)
+    serializer = ProfessorSerializer(professor)
+    return Response(serializer.data)
 
 
-class ClassroomDelete(View):
-    def post(self, request, classroom_id):
-        try:
-            classroom = SaladeAula.objects.get(id=classroom_id)
-            classroom.delete()
-            return JsonResponse({'message': 'Classroom deleted'})
-        except SaladeAula.DoesNotExist:
-            return JsonResponse({'message': 'Classroom not found'}, status=404)
+@api_view(['POST'])
+def professor_create(request):
+    serializer = ProfessorSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def sala_list(request):
+    salas = Sala.objects.all()
+    serializer = SalaSerializer(salas, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def sala_detail(request, pk):
+    sala = get_object_or_404(Sala, pk=pk)
+    serializer = SalaSerializer(sala)
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+def sala_create(request):
+    serializer = SalaSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def alocacao_list(request):
+    alocacoes = Alocacao.objects.all()
+    serializer = AlocacaoSerializer(alocacoes, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def alocacao_detail(request, pk):
+    alocacao = get_object_or_404(Alocacao, pk=pk)
+    serializer = AlocacaoSerializer(alocacao)
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+def alocacao_create(request):
+    serializer = AlocacaoSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

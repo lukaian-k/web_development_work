@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import core
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_jwt',
     'core',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +60,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 ROOT_URLCONF = 'djangoProject.urls'
+
+AUTH_USER_MODEL = 'core.User'
 
 TEMPLATES = [
     {
