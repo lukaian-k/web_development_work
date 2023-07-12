@@ -14,10 +14,10 @@ import pandas as pd
 #print(dicionario)
 
 r1 = {"Professor": "Eurinardo", "Disciplina": "PAA", "Sala": "5", "Bloco": "1A", "Horario": "8:00-10:00", "Semana": "Segunda"}
-r2 = {"Professor": "Eurinardo", "Disciplina": "PAA", "Sala": "3", "Bloco": "1A", "Horario": "10:00-12:00", "Semana": "Quinta"}
-r3 = {"Professor": "Eurinardo", "Disciplina": "PAA", "Sala": "4", "Bloco": "1A", "Horario": "13:30-15:30", "Semana": "Sexta"}
+r2 = {"Professor": "Eurinardo", "Disciplina": "PAA", "Sala": "3", "Bloco": "2A", "Horario": "10:00-12:00", "Semana": "Terca"}
+r3 = {"Professor": "Eurinardo", "Disciplina": "PAA", "Sala": "3", "Bloco": "2A", "Horario": "13:30-15:30", "Semana": "Terca"}
 r4 = {"Professor": "Eurinardo", "Disciplina": "PAA", "Sala": "5", "Bloco": "1A", "Horario": "15:30-17:30", "Semana": "Terca"}
-r5 = {"Professor": "Reuber", "Disciplina": "PAA", "Sala": "5", "Bloco": "1A", "Horario": "15:30-17:30", "Semana": "Terca"}
+r5 = {"Professor": "Reuber", "Disciplina": "PAA", "Sala": "3", "Bloco": "2A", "Horario": "13:30-15:30", "Semana": "Terca"}
 
 
 banco = [r1, r2, r3, r4]
@@ -60,9 +60,31 @@ def alocar_novo_registro(df, novo_registro):
             else:
                 print("O mesmo professor já está ocupado esse horário.")
                 
+ 
+def horarios_disponiveis(df, novo_registro):
+    filtro = df.loc[(df['Bloco'] == novo_registro['Bloco']) & (df['Sala'] == novo_registro['Sala']) & (df['Semana'] == novo_registro['Semana'])]
+    horarios_preenchidos = filtro['Horario'].unique()
+    print(f"Horários preenchidos: {horarios_preenchidos}")
+    print(f"Horário requerido: {novo_registro['Horario']}")
+    horarios_disponiveis = []
+    
+    horarios = ['8:00-10:00', '10:00-12:00', '13:30-15:30', '15:30-17:30']
+    for horario in horarios:
+        if horario not in horarios_preenchidos:
+            horarios_disponiveis.append(horario)
+    
+    if novo_registro['Horario'] in horarios_disponiveis:
+        print("Horário disponível")
+    else:
+        print("Esse horário não está disponível")
+        print(f"Horários disponíveis: {horarios_disponiveis}")
         
-print(df)
-
-alocar_novo_registro(df, r5)
+    #x = filtro[horarios] in horarios
+    #print(filtro['Horario'])
+    #horarios_disponiveis = [horario for horario in horarios if horario not in list(filtro['Horario'])]
+    #print(horarios_disponiveis)
+    
+horarios_disponiveis(df, r5)
+#alocar_novo_registro(df, r5)
 
     
