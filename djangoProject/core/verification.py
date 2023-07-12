@@ -35,7 +35,7 @@ def verificar_registro_existente(df, novo_registro):
         return 0 # False
 
 def verificar_conflito_sala(df, registro):
-    if len(df.loc[(df['Sala'] == registro['Sala']) & (df['Semana'] == registro['Semana']) & (df['Horario'] == registro['Horario'])]) == 0:
+    if len(df.loc[(df['Bloco']) == registro['Bloco'] & (df['Sala'] == registro['Sala']) & (df['Semana'] == registro['Semana']) & (df['Horario'] == registro['Horario'])]) == 0:
         return 0
     else:
        return 1
