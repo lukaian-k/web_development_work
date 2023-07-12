@@ -12,8 +12,8 @@ defineProps({
         <v-row no-gutters align="center">
             <v-card-text>
                 <h3>{{ professor.nome }}</h3>
-                <p>Departamento: {{ professor.dep }}</p>
-                <p>Código: {{ professor.cod }}</p>
+                <p>Departamento: {{ professor.departamento }}</p>
+                <p>Código: {{ professor.codigo }}</p>
                 <p>Formação: {{ professor.formacao }}</p>
             </v-card-text>
         </v-row>
