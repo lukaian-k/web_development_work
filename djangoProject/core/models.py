@@ -59,7 +59,7 @@ class Curso(models.Model):
 class Alocacao(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
     curso = models.ForeignKey('Curso', on_delete=models.CASCADE)
-    DATA_SEMANA = models.CharField(max_leght=100)
+    DATA_SEMANA = models.CharField(max_length=100)
     horario = models.TimeField()
     sala = models.CharField(max_length=100, choices=(
         ('Sala 1', 'Sala 1'),

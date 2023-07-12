@@ -1,8 +1,11 @@
 <script setup>
 import Title from '../../components/Title.vue'
+import SuccessAlert from '../../components/SuccessAlert.vue'
 import data from './data.json'
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import axios from 'axios'
+
+let isShow = ref(false)
 
 const state = reactive({
     professors: []
@@ -20,8 +23,27 @@ let rooms = data.Salas
 let blocks = data.Blocos
 let time = data.Horarios
 
+let form = reactive({
+    "professor": null,
+    "curso": null,
+    "horario": '',
+    "sala": '',
+    "bloco": ''
+})
+
 function submitForm() {
-    console.log('Formulário enviado!')
+    axios.post('http://localhost:8000/alocacoes/create/', form)
+        .then(res => {
+            form.professor = null
+            form.curso = null
+            form.horario = ''
+            form.sala = ''
+            form.bloco = ''
+            form.isShow.value = true
+        })
+        .catch(error => {
+            console.error(error)
+        })
 }
 </script>  
 
@@ -34,24 +56,24 @@ function submitForm() {
         <v-form>
             <v-row>
                 <v-col cols="12" md="6">
-                    <v-select :items="state.professors" label="Professor" outlined></v-select>
+                    <v-select v-model="form.professor" :items="state.professors" label="Professor" outlined></v-select>
                 </v-col>
                 <v-col cols="12" md="6">
-                    <v-select :items="courses" label="Curso" outlined></v-select>
+                    <v-select v-model="form.curso" :items="courses" label="Curso" outlined></v-select>
                 </v-col>
             </v-row>
             <v-row>
                 <v-col cols="12" md="6">
-                    <v-select :items="rooms" label="Sala" outlined></v-select>
+                    <v-select v-model="form.sala" :items="rooms" label="Sala" outlined></v-select>
                 </v-col>
                 <v-col cols="12" md="6">
-                    <v-select :items="blocks" label="Bloco" outlined></v-select>
+                    <v-select v-model="form.bloco" :items="blocks" label="Bloco" outlined></v-select>
                 </v-col>
             </v-row>
 
             <v-row>
                 <v-col cols="12" md="6">
-                    <v-select :items="time" label="Horário" outlined></v-select>
+                    <v-select v-model="form.horario" :items="time" label="Horário" outlined></v-select>
                 </v-col>
             </v-row>
 
@@ -60,6 +82,8 @@ function submitForm() {
             <v-btn class="btn" @click="submitForm">Alocar</v-btn>
         </v-form>
     </v-container>
+
+    <SuccessAlert :isShow="isShow.valueOf()" msg="Alocação feita!" />
 </template>
 
 <style scoped lang="scss">

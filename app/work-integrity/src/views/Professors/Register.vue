@@ -13,7 +13,7 @@ let form = reactive({
     "formacao": null
 })
 
-async function onSubmit() {
+function onSubmit() {
     axios.post('http://localhost:8000/professores/create/', form)
         .then(res => {
             form.nome = ''
