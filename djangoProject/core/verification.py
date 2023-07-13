@@ -89,13 +89,9 @@ def horarios_disponiveis(df, novo_registro):
     else:
         print("Esse horário não está disponível")
         print(f"Horários disponíveis: {horarios_disponiveis}")
-        
-    #x = filtro[horarios] in horarios
-    #print(filtro['Horario'])
-    #horarios_disponiveis = [horario for horario in horarios if horario not in list(filtro['Horario'])]
-    #print(horarios_disponiveis)
+
     
-#horarios_disponiveis(df, r5)
+# Já existe
 #alocar_novo_registro(df, r5)
 
 #teste 2 Registro já está sendo utilizada
