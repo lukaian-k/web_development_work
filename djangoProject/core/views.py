@@ -2,12 +2,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
-from .models import Professor, Sala, Alocacao
+from .models import Professor, Sala, Alocacao, Curso
 from .serializers import (
     LoginSerializer,
     ProfessorSerializer,
     SalaSerializer,
     AlocacaoSerializer,
+    CursoSerializer,
 )
 
 
@@ -67,6 +68,20 @@ def sala_create(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET', 'POST'])
+def curso_list_create(request):
+    if request.method == 'GET':
+        cursos = Curso.objects.all()
+        serializer = CursoSerializer(cursos, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = CursoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 @api_view(['GET'])
 def alocacao_list(request):
     alocacoes = Alocacao.objects.all()
@@ -79,7 +94,6 @@ def alocacao_detail(request, pk):
     alocacao = get_object_or_404(Alocacao, pk=pk)
     serializer = AlocacaoSerializer(alocacao)
     return Response(serializer.data)
-
 
 @api_view(['POST'])
 def alocacao_create(request):
