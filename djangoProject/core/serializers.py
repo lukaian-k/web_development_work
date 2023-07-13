@@ -1,4 +1,4 @@
-from .models import Professor, Sala, Alocacao
+from .models import Professor, Sala, Alocacao, Curso
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 class LoginSerializer(serializers.Serializer):
@@ -24,27 +24,22 @@ class ProfessorSerializer(serializers.ModelSerializer):
 class SalaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sala
-        fields = ['nome']
+        fields = ['nome', 'capacidade', 'bloco']
+
+
+class CursoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Curso
+        fields = ['id', 'nome']
 
 class AlocacaoSerializer(serializers.ModelSerializer):
-    # Outros campos do serializer
+    professor = serializers.PrimaryKeyRelatedField(queryset=Professor.objects.all())
+    sala = serializers.PrimaryKeyRelatedField(queryset=Sala.objects.all())
 
-    def validate(self, attrs):
-        professor = attrs['professor']
-        sala = attrs['sala']
-        dia_semana = attrs['dia_semana']
-        horario = attrs['horario']
-        bloco = attrs['bloco']
+    class Meta:
+        model = Alocacao
+        fields = ['professor', 'curso', 'horario', 'sala', 'bloco', 'semana']
 
-        # Verifica se a sala está ocupada no mesmo dia da semana e horário
-        if Alocacao.objects.filter(sala=sala, dia_semana=dia_semana, horario=horario, bloco=bloco).exists():
-            raise serializers.ValidationError('A sala já está ocupada no mesmo dia e horário')
-
-        # Verifica se o horário escolhido é válido
-        if horario not in ['8:00-10:30', '10:30-12:00', '13:30-15:30', '15:30-17:30']:
-            raise serializers.ValidationError('Horário inválido')
-
-        return attrs
 
 
     #Logica 1

@@ -47,6 +47,9 @@ class Professor(models.Model):
 
 class Sala(models.Model):
     nome = models.CharField(max_length=100)
+    capacidade = models.IntegerField()
+    bloco = models.CharField(max_length=100)
+
 
     def __str__(self):
         return self.nome
@@ -56,22 +59,15 @@ class Curso(models.Model):
 
     def __str__(self):
         return self.nome
+
 class Alocacao(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    curso = models.ForeignKey('Curso', on_delete=models.CASCADE)
-    DATA_SEMANA = models.CharField(max_length=100)
+    # curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    curso = models.CharField(max_length=100)
     horario = models.TimeField()
-    sala = models.CharField(max_length=100, choices=(
-        ('Sala 1', 'Sala 1'),
-        ('Sala 2', 'Sala 2'),
-
-    ))
-    bloco = models.CharField(max_length=100, choices=(
-        ('Bloco 1', 'Bloco 1'),
-        ('Bloco 2', 'Bloco 2'),
-
-    ))
+    sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
+    bloco = models.CharField(max_length=100)
+    semana = models.CharField(max_length=100)
 
     def __str__(self):
         return f'{self.professor} - {self.curso}'
-
