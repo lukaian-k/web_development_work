@@ -21,31 +21,34 @@ axios.get('http://localhost:8000/professores/').then(res => {
 let courses = data.Cursos
 let rooms = data.Salas
 let blocks = data.Blocos
-let time = data.Horarios
+let schedules = data.Horarios
+let dayWeek = data.Semana
 
 let form = reactive({
-    "professor": null,
-    "curso": null,
+    "professor": '',
+    "curso": '',
     "horario": '',
     "sala": '',
-    "bloco": ''
+    "bloco": '',
+    "semana": ''
 })
 
 function submitForm() {
     axios.post('http://localhost:8000/alocacoes/create/', form)
         .then(res => {
-            form.professor = null
-            form.curso = null
+            form.professor = ''
+            form.curso = ''
             form.horario = ''
             form.sala = ''
             form.bloco = ''
+            form.semana = ''
             form.isShow.value = true
         })
         .catch(error => {
             console.error(error)
         })
 }
-</script>  
+</script>
 
 <template>
     <v-container>
@@ -73,7 +76,10 @@ function submitForm() {
 
             <v-row>
                 <v-col cols="12" md="6">
-                    <v-select v-model="form.horario" :items="time" label="Horário" outlined></v-select>
+                    <v-select v-model="form.horario" :items="schedules" label="Horário" outlined></v-select>
+                </v-col>
+                <v-col cols="12" md="6">
+                    <v-select v-model="form.semana" :items="dayWeek" label="Dia da Semana" outlined></v-select>
                 </v-col>
             </v-row>
 
