@@ -24,7 +24,7 @@ class ProfessorSerializer(serializers.ModelSerializer):
 class SalaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sala
-        fields = ['nome']
+        fields = ['nome', 'capacidade', 'bloco']
 
 
 class CursoSerializer(serializers.ModelSerializer):
