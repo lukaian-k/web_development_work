@@ -67,7 +67,6 @@ def sala_create(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
 @api_view(['GET', 'POST'])
 def curso_list_create(request):
     if request.method == 'GET':
