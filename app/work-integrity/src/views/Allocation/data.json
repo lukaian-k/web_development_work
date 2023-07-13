@@ -319,5 +319,12 @@
         "10:00-12:00",
         "13:30-15:30",
         "15:30-17:30"
+    ],
+    "Semana": [
+        "Segunda-Feira",
+        "Terça-Feira",
+        "Quarta-Feira",
+        "Quinta-Feira",
+        "Sexta-Feira"
     ]
 }
