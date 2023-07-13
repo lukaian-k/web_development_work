@@ -17,10 +17,13 @@ function deleteAllocation() {
 
 <template>
     <v-card class="allocation-card" outlined>
-        <v-card-title>{{ allocation.course }}</v-card-title>
+        <v-card-title>{{ allocation.curso }}</v-card-title>
         <v-card-subtitle>{{ allocation.professor }}</v-card-subtitle>
         <v-card-text>
-            Sala: {{ allocation.room }} | Bloco: {{ allocation.block }}
+            Sala: {{ allocation.sala }} | Bloco: {{ allocation.bloco }}
+        </v-card-text>
+        <v-card-text>
+            Horario: {{ allocation.horario }} | Dia da Semana: {{ allocation.semana }}
         </v-card-text>
         <v-card-actions>
             <v-btn color="var(--success-indicators)" text @click="editAllocation">Editar</v-btn>
