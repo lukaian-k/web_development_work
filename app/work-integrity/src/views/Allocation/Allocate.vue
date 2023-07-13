@@ -32,10 +32,10 @@ let schedules = data.Horarios
 let dayWeek = data.Semana
 
 let form = reactive({
-    "professor": '',
+    "professor": null,
     "curso": '',
     "horario": '',
-    "sala": '',
+    "sala": null,
     "bloco": '',
     "semana": ''
 })
@@ -52,12 +52,13 @@ function submitForm() {
             form.sala = index + 1
         }
     })
+    
     axios.post('http://localhost:8000/alocacoes/create/', form)
         .then(res => {
-            form.professor = ''
+            form.professor = null
             form.curso = ''
             form.horario = ''
-            form.sala = ''
+            form.sala = null
             form.bloco = ''
             form.semana = ''
             form.isShow.value = true
