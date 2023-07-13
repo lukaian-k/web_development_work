@@ -34,7 +34,6 @@ class CursoSerializer(serializers.ModelSerializer):
 
 class AlocacaoSerializer(serializers.ModelSerializer):
     professor = serializers.PrimaryKeyRelatedField(queryset=Professor.objects.all())
-    curso = serializers.PrimaryKeyRelatedField(queryset=Curso.objects.all())
     sala = serializers.PrimaryKeyRelatedField(queryset=Sala.objects.all())
 
     class Meta:
