@@ -52,7 +52,7 @@ function submitForm() {
             form.sala = index + 1
         }
     })
-    
+
     axios.post('http://localhost:8000/alocacoes/create/', form)
         .then(res => {
             form.professor = null
@@ -61,7 +61,7 @@ function submitForm() {
             form.sala = null
             form.bloco = ''
             form.semana = ''
-            form.isShow.value = true
+            isShow.value = true
         })
         .catch(error => {
             console.error(error)
