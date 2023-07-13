@@ -9,7 +9,7 @@ let items = [
     },
     {
         title: "Visualizar Salas de Aula",
-        router: "/development-page"
+        router: "/classrooms/view"
     }
 ]
 </script>

@@ -32,7 +32,7 @@ function onSubmit() {
     <v-sheet width="800" class="mx-auto">
         <v-container fluid>
             <v-form fast-fail @submit.prevent=onSubmit>
-                <v-text-field v-model="form.nome" required label="Número da Sala" />
+                <v-text-field v-model="form.nome" required label="Nome da Sala" />
                 <v-text-field v-model="form.capacidade" required type="number" label="Capacidade" />
                 <v-text-field v-model="form.bloco" required label="Bloco" />
 
