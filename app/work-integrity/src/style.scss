@@ -1,0 +1,75 @@
+$background: #f2f2f2;
+$background-gray: #d9d9d9;
+$highlights: #232946;
+$secondary-elements: #2E86AB;
+$success-indicators: #3FBE7D;
+$error: #E74C3C;
+$text: #000;
+
+:root {
+  --background: #{$background};
+  --background-gray: #{$background-gray};
+  --highlights: #{$highlights};
+  --secondary-elements: #{$secondary-elements};
+  --success-indicators: #{$success-indicators};
+  --error: #{$error};
+  --text: #{$text};
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: $text;
+  background-color: $background;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: $secondary-elements;
+  text-decoration: inherit;
+
+  &:hover {
+    color: adjust-hue($color: $secondary-elements, $degrees: -15);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.default-btn {
+  color: $background;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: $highlights;
+  cursor: pointer;
+  transition: border-color 0.25s;
+
+  &:hover {
+    border-color: $success-indicators;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+}
+
+#app {
+  text-align: center;
+}

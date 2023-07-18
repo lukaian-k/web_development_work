@@ -1,0 +1,43 @@
+{
+    "Cursos": [
+        "CC",
+        "ES",
+        "EP",
+        "EM",
+        "EC"
+    ],
+    "Blocos": [
+        "1A",
+        "1B",
+        "2A",
+        "2B"
+    ],
+    "Salas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+    ],
+    "Horarios": [
+        "08:00-10:00",
+        "10:00-12:00",
+        "13:30-15:30",
+        "15:30-17:30"
+    ],
+    "Semana": [
+        "Segunda-Feira",
+        "Terça-Feira",
+        "Quarta-Feira",
+        "Quinta-Feira",
+        "Sexta-Feira"
+    ]
+}
