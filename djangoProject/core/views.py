@@ -101,6 +101,7 @@ def alocacao_create(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+<<<<<<< HEAD
 
 @api_view(['DELETE'])
 def alocacao_delete(request, pk):
@@ -126,3 +127,5 @@ def alocacao_update(request, pk):
         return Response(serializer.data)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+=======
+>>>>>>> origin/main
