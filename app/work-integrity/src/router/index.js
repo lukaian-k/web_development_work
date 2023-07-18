@@ -7,6 +7,7 @@ import Home from '../views/Home.vue'
 import Professors from './professors'
 import Classrooms from './classrooms'
 import Allocation from './allocation'
+import Schedules from './schedules'
 
 
 const router = createRouter({
@@ -24,15 +25,11 @@ const router = createRouter({
         ...Professors,
         ...Classrooms,
         ...Allocation,
+        ...Schedules,
         {
           path: '/courses',
           name: 'Courses',
           component: () => import('../views/Courses/Courses.vue')
-        },
-        {
-          path: '/schedules',
-          name: 'Schedules',
-          component: () => import('../views/Schedules/Schedules.vue')
         }
       ]
     },

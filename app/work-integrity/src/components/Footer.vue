@@ -4,7 +4,7 @@ import { reactive } from 'vue'
 const itens = reactive([
     { name: 'Cursos', route: '/courses' },
     { name: 'Professores', route: '/professors' },
-    { name: 'Horários', route: /*'/schedules'*/ '/development-page' },
+    { name: 'Horários', route: '/schedules' },
     { name: 'Sala de Aula', route: '/classrooms' },
     { name: 'Alocação', route: '/allocation' }
 ])
