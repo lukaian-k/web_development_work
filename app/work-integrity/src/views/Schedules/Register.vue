@@ -56,12 +56,11 @@ function onSubmit() {
 
                 <v-container fluid>
                     <v-row class="container">
-                        <v-select :items="state.classrooms" required class="element" v-model="form.sala"
-                            label="Sala"></v-select>
+                        <v-select :items="state.classrooms" required v-model="form.sala" label="Sala"></v-select>
                         <v-select :items="blocks" required class="element" v-model="form.bloco" label="Bloco"></v-select>
                     </v-row>
                     <v-row class="container">
-                        <v-select :items="dayWeek" required class="element" v-model="form.data" label="Data"></v-select>
+                        <v-select :items="dayWeek" required v-model="form.data" label="Data"></v-select>
                         <v-select :items="schedules" required class="element" v-model="form.hora" label="hora"></v-select>
                     </v-row>
                 </v-container>
