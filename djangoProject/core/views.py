@@ -4,6 +4,7 @@ from rest_framework import status
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
 from .models import Professor, Sala, Alocacao, Curso
 from .serializers import (
     UserSerializer,
@@ -114,7 +115,8 @@ def alocacao_create(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['DELETE'])
-def alocacao_delete(request, pk):
+@permission_classes([IsAuthenticated])
+def alocacao_excluir(request, pk):
     try:
         alocacao = Alocacao.objects.get(pk=pk)
     except Alocacao.DoesNotExist:
