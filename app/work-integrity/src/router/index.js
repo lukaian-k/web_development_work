@@ -15,10 +15,31 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: FullLayout,
+      component: BlankLayout,
       children: [
         {
           path: '',
+          name: 'Welcome',
+          component: () => import('../views/Welcome.vue')
+        },
+        {
+          path: '/sign-in',
+          name: 'Sign-in',
+          component: () => import('../views/Login.vue')
+        },
+        {
+          path: '/development-page',
+          name: 'Development Page',
+          component: () => import('../views/DevelopmentPage.vue')
+        }
+      ]
+    },
+    {
+      path: '/',
+      component: FullLayout,
+      children: [
+        {
+          path: '/home',
           name: 'Home',
           component: Home
         },
@@ -30,22 +51,6 @@ const router = createRouter({
           path: '/courses',
           name: 'Courses',
           component: () => import('../views/Courses/Courses.vue')
-        }
-      ]
-    },
-    {
-      path: '/',
-      component: BlankLayout,
-      children: [
-        {
-          path: '/sign-in',
-          name: 'Sign-in',
-          component: () => import('../views/Login.vue')
-        },
-        {
-          path: '/development-page',
-          name: 'Development Page',
-          component: () => import('../views/DevelopmentPage.vue')
         }
       ]
     }

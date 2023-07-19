@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router'
 <template>
     <v-app-bar app color=var(--highlights)>
         <v-app-bar-icon>
-            <RouterLink to="/">
+            <RouterLink to="/home">
                 <img id="icon-ufc" src="../assets/icon-ufc-header.svg" alt="icone da UFC">
             </RouterLink>
         </v-app-bar-icon>
