@@ -24,7 +24,7 @@ function logout() {
         </v-app-bar-icon>
 
         <template v-slot:append>
-            <v-btn @click="logout">Logout</v-btn>
+            <v-btn class="btn" @click="logout">Logout</v-btn>
         </template>
     </v-app-bar>
 </template>
@@ -32,5 +32,9 @@ function logout() {
 <style scoped>
 #icon-ufc {
     margin-left: 2em;
+}
+
+.btn {
+    color: var(--background);
 }
 </style>

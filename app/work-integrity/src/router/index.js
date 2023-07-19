@@ -7,8 +7,6 @@ import Home from '../views/Home.vue'
 import Professors from './professors'
 import Classrooms from './classrooms'
 import Allocation from './allocation'
-import Schedules from './schedules'
-
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,7 +44,6 @@ const router = createRouter({
         ...Professors,
         ...Classrooms,
         ...Allocation,
-        ...Schedules,
         {
           path: '/courses',
           name: 'Courses',
