@@ -69,7 +69,6 @@ function deleteAllocation(allocation) {
             console.error(error)
         })
 }
-
 </script>
 
 <template>
