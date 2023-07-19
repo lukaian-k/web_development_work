@@ -4,7 +4,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 # Create your models here.
 
 class UserManager(BaseUserManager):
-    # Criação do usuário
     def create_user(self, id_user, password=None):
         if not id_user:
             raise ValueError("O campo 'id_user' é obrigatório.")
@@ -21,7 +20,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-# Usuário personalizado para se adaptar às necessidades do aplicativo
+
 class User(AbstractBaseUser):
     id_user = models.CharField(max_length=255, unique=True)
     is_active = models.BooleanField(default=True)

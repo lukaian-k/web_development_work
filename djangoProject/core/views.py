@@ -2,25 +2,36 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
+from django.contrib.auth import authenticate
+from rest_framework.authtoken.models import Token
 from .models import Professor, Sala, Alocacao, Curso
 from .serializers import (
-    LoginSerializer,
+    UserSerializer,
     ProfessorSerializer,
     SalaSerializer,
     AlocacaoSerializer,
     CursoSerializer,
 )
 
+@api_view(['POST'])
+def user_register(request):
+    serializer = UserSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'message': 'Registration successful'}, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-def login_user(request):
-    serializer = LoginSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.validated_data.pop('password')
-        user = serializer.validated_data['id_user']
-        return Response({'message': 'Login successful'})
-    return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
+def user_login(request):
+    id_user = request.data.get('id_user')
+    password = request.data.get('password')
 
+    user = authenticate(request, id_user=id_user, password=password)
+    if user is not None:
+        token, _ = Token.objects.get_or_create(user=user)
+        return Response({'token': token.key, 'message': 'Login successful'})
+    else:
+        return Response({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 @api_view(['GET'])
 def professor_list(request):
@@ -101,7 +112,6 @@ def alocacao_create(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-<<<<<<< HEAD
 
 @api_view(['DELETE'])
 def alocacao_delete(request, pk):
@@ -127,5 +137,4 @@ def alocacao_update(request, pk):
         return Response(serializer.data)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-=======
->>>>>>> origin/main
+

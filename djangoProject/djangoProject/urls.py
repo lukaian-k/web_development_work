@@ -28,11 +28,8 @@ urlpatterns = [
     path('alocacoes/', views.alocacao_list, name='alocacao_list'),
     path('alocacoes/<int:pk>/', views.alocacao_detail, name='alocacao_detail'),
     path('alocacoes/create/', views.alocacao_create, name='alocacao_create'),
-<<<<<<< HEAD
-    path('alocacoes/<int:pk>/', views.alocacao_delete, name='alocacao_delete'),
-    path('alocacoes/<int:pk>/', views.alocacao_update, name='alocacao_update'),
-
-=======
->>>>>>> origin/main
+    path('alocacoes/<int:pk>/delete/', views.alocacao_delete, name='alocacao_delete'),
+    path('alocacoes/<int:pk>/update/', views.alocacao_update, name='alocacao_update'),
+    path('register/', views.user_register, name='user_create'),
+    path('login/', views.user_login, name='user_login'),
 ]
-
