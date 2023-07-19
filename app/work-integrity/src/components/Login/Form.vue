@@ -1,6 +1,9 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import { useStore } from 'vuex'
 import { ref } from 'vue'
+import axios from 'axios'
+import router from "../../router"
 
 let form = ref(false)
 let id = ref(null)
@@ -8,23 +11,32 @@ let password = ref(null)
 let visible = ref(false)
 let loading = ref(false)
 
+const store = useStore()
+console.log(store.state.isAuthenticated)
+
 async function onSubmit() {
-  if (!this.form) return
+  if (!form) return
 
-  this.loading = true
-  setTimeout(() => (this.loading = false), 2000)
+  loading = true
+  setTimeout(() => (loading = false), 2000)
 
-  try {
-    const response = await this.$http.post('http://localhost:8000/api/sign-in/', {
-      id_user: this.id,
-      password: this.password,
+  axios.post('http://localhost:8000/login/', {
+    id_user: id.value,
+    password: password.value
+  })
+    .then(res => {
+      store.commit('SET_AUTHENTICATED', true)
+      store.commit('SET_USER', res.data)
+
+      router.push('/home')
     })
+    .catch(error => {
+      console.error('Erro:', error)
 
-    alert(response)
-
-  } catch (error) {
-    console.log(error)
-  }
+      alert('Não foi possível efetuar o login.')
+      id.value = ''
+      password.value = ''
+    })
 }
 
 function required(v) {
@@ -36,10 +48,10 @@ function required(v) {
   <v-form class="empty-form" v-model=form @submit.prevent=onSubmit>
     <div id="title">
       <h1>Bem-vindo!</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+      <p>Insira todas as informações corretamente para efetuar o login.</p>
     </div>
 
-    <v-text-field v-model=id type="input" :readonly=loading :rules=[required] label="ID" variant="outlined"
+    <v-text-field v-model=id type="number" :readonly=loading :rules=[required] label="ID" variant="outlined"
       placeholder="Insira seu código de identificação" density="compact" />
 
     <v-text-field v-model=password :type="visible ? 'text' : 'password'" @click:append-inner="visible = !visible"

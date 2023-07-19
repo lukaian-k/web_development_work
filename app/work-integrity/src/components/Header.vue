@@ -11,7 +11,7 @@ import { RouterLink } from 'vue-router'
         </v-app-bar-icon>
 
         <template v-slot:append>
-            <RouterLink to="/sign-in">Sign-in</RouterLink>
+            <RouterLink to="/development-page">Logout</RouterLink>
         </template>
 
     </v-app-bar>
