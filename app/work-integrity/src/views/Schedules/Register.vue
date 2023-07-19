@@ -5,6 +5,15 @@ import data from './data.json'
 import { ref, reactive } from 'vue'
 import axios from 'axios'
 
+import { useStore } from 'vuex'
+import router from "../../router"
+
+const store = useStore()
+
+if (!store.state.isAuthenticated) {
+    router.push('/sign-in')
+}
+
 let isShow = ref(false)
 
 const state = reactive({

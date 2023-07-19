@@ -4,8 +4,8 @@ import './style.scss'
 
 import axios from 'axios'
 import router from './router'
+import store from './store/index'
 import vuetify from './plugins/vuetify'
-import store from './plugins/store'
 
 const app = createApp(App)
 
@@ -15,7 +15,7 @@ const api = axios.create({
 app.config.globalProperties.$http = api
 
 app.use(router)
-app.use(vuetify)
 app.use(store)
+app.use(vuetify)
 
 app.mount('#app')

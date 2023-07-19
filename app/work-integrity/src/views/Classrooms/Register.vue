@@ -4,6 +4,15 @@ import SuccessAlert from '../../components/SuccessAlert.vue'
 import { ref, reactive } from 'vue'
 import axios from 'axios'
 
+import { useStore } from 'vuex'
+import router from "../../router"
+
+const store = useStore()
+
+if (!store.state.isAuthenticated) {
+    router.push('/sign-in')
+}
+
 let isShow = ref(false)
 
 let form = reactive({

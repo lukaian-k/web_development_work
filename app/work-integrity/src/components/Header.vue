@@ -1,5 +1,18 @@
-<script>
+<script setup>
 import { RouterLink } from 'vue-router'
+import { useStore } from 'vuex'
+import router from "../router"
+
+const store = useStore()
+
+function logout() {
+    localStorage.removeItem('isAuthenticated')
+    localStorage.removeItem('user')
+    store.commit('SET_AUTHENTICATED', false)
+    store.commit('SET_USER', null)
+
+    router.push('/')
+}
 </script>
 
 <template>
@@ -11,9 +24,8 @@ import { RouterLink } from 'vue-router'
         </v-app-bar-icon>
 
         <template v-slot:append>
-            <RouterLink to="/development-page">Logout</RouterLink>
+            <v-btn @click="logout">Logout</v-btn>
         </template>
-
     </v-app-bar>
 </template>
 

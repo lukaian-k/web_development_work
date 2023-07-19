@@ -12,7 +12,10 @@ let visible = ref(false)
 let loading = ref(false)
 
 const store = useStore()
-console.log(store.state.isAuthenticated)
+
+if (store.state.isAuthenticated) {
+  router.push('/home')
+}
 
 async function onSubmit() {
   if (!form) return

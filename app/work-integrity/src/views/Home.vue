@@ -1,6 +1,14 @@
 <script setup>
 import { reactive } from 'vue'
 import Title from '../components/Title.vue';
+import { useStore } from 'vuex'
+import router from "../router"
+
+const store = useStore()
+
+if (!store.state.isAuthenticated) {
+    router.push('/sign-in')
+}
 
 const itens = reactive([
     { name: 'Cursos', route: '/courses' },

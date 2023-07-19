@@ -2,6 +2,15 @@
 import Title from '../../components/Title.vue'
 import Menu from '../../components/Menu.vue'
 
+import { useStore } from 'vuex'
+import router from "../../router"
+
+const store = useStore()
+
+if (!store.state.isAuthenticated) {
+    router.push('/sign-in')
+}
+
 let items = [
     {
         title: "Cadastrar Sala de Aula",
