@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router'
 <template>
     <div class="background">
         <h1 class="message">Em Desenvolvimento</h1>
-        <RouterLink to="/">
+        <RouterLink to="/home">
             <v-btn id="btn">Voltar ao ínicio</v-btn>
         </RouterLink>
     </div>

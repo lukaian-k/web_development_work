@@ -5,6 +5,15 @@ import SuccessAlert from '../../components/SuccessAlert.vue'
 import data from './data.json'
 import { ref, computed } from 'vue'
 
+import { useStore } from 'vuex'
+import router from "../router"
+
+const store = useStore()
+
+if (!store.state.isAuthenticated) {
+    router.push('/sign-in')
+}
+
 let filtro = ref('')
 let textInput = ref('')
 let isShow = ref(false)

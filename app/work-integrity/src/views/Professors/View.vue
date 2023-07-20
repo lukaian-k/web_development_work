@@ -4,6 +4,15 @@ import Card from '../../components/CardViewProfessors.vue'
 import { ref, reactive, computed } from 'vue'
 import axios from 'axios'
 
+import { useStore } from 'vuex'
+import router from "../../router"
+
+const store = useStore()
+
+if (!store.state.isAuthenticated) {
+    router.push('/sign-in')
+}
+
 const state = reactive({
     professores: null
 })

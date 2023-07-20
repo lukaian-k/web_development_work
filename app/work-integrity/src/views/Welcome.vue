@@ -1,4 +1,12 @@
 <script setup>
+import { useStore } from 'vuex'
+import router from "../router"
+
+const store = useStore()
+
+if (store.state.isAuthenticated) {
+    router.push('/home')
+}
 </script>
 
 <template>
