@@ -3,10 +3,11 @@ import Title from '../../components/Title.vue'
 import Card from '../../components/CardViewCurso.vue'
 import SuccessAlert from '../../components/SuccessAlert.vue'
 import data from './data.json'
-import { ref, computed } from 'vue'
+import { ref, reactive, computed } from 'vue'
+import axios from 'axios'
 
 import { useStore } from 'vuex'
-import router from "../router"
+import router from "../../router"
 
 const store = useStore()
 
@@ -14,24 +15,48 @@ if (!store.state.isAuthenticated) {
     router.push('/sign-in')
 }
 
+const state = reactive({
+    courses: []
+})
+
+let form = reactive({
+    "nome": ''
+})
+
 let filtro = ref('')
 let textInput = ref('')
 let isShow = ref(false)
+
+axios.get('http://localhost:8000/curso/').then(res => {
+    state.courses = res.data.map((i) => i.nome)
+})
+    .catch(error => {
+        console.error(error)
+    })
 
 const listaFiltrada = computed(() => {
     const nomesFiltrados = filtro.value.toLowerCase().trim()
 
     if (!nomesFiltrados) {
-        return data.Disciplinas
+        return state.courses
     }
 
-    return data.Disciplinas
+    return state.courses
         .filter(i => i.toLowerCase().includes(nomesFiltrados))
 })
 
 function insertCourse() {
-    textInput.value = ''
-    isShow.value = true
+    form.nome = textInput.value
+
+    axios.post('http://localhost:8000/curso/', form)
+        .then(res => {
+            form.nome = ''
+            textInput.value = ''
+            isShow.value = true
+        })
+        .catch(error => {
+            console.error(error)
+        })
 }
 </script>
 
