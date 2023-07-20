@@ -28,6 +28,7 @@ function deleteAllocation(id) {
     axios.delete(`http://localhost:8000/alocacoes/${id}/excluir/`)
         .then(res => {
             console.log('Exclusão realizada com sucesso')
+            alert('Exclusão realizada com sucesso')
         })
         .catch(error => {
             console.error('Ocorreu um erro ao excluir a alocação:', error)
