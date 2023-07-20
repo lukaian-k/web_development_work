@@ -35,6 +35,15 @@ axios.get('http://localhost:8000/professores/').then(res => {
         console.error(error)
     })
 
+axios.get('http://localhost:8000/curso/').then(res => {
+    state.allocations.map((i) => {
+        i.curso = res.data[i.curso - 1].nome
+    })
+})
+    .catch(error => {
+        console.error(error)
+    })
+
 const listaFiltrada = computed(() => {
     const nomesFiltrados = filtro.value.toLowerCase().trim()
 
