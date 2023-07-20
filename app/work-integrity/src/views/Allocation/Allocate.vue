@@ -18,7 +18,8 @@ let isShow = ref(false)
 
 const state = reactive({
     professors: [],
-    classrooms: []
+    classrooms: [],
+    courses: []
 })
 
 axios.get('http://localhost:8000/professores/').then(res => {
@@ -35,14 +36,20 @@ axios.get('http://localhost:8000/salas/').then(res => {
         console.error(error)
     })
 
-let courses = data.Cursos
+axios.get('http://localhost:8000/curso/').then(res => {
+    state.courses = res.data.map((i) => i.nome)
+})
+    .catch(error => {
+        console.error(error)
+    })
+
 let blocks = data.Blocos
 let schedules = data.Horarios
 let dayWeek = data.Semana
 
 let form = reactive({
     "professor": null,
-    "curso": '',
+    "curso": null,
     "horario": '',
     "sala": null,
     "bloco": '',
@@ -62,10 +69,16 @@ function submitForm() {
         }
     })
 
+    state.courses.forEach((i, index) => {
+        if (i == state.courses[index]) {
+            form.curso = index + 1
+        }
+    })
+
     axios.post('http://localhost:8000/alocacoes/create/', form)
         .then(res => {
             form.professor = null
-            form.curso = ''
+            form.curso = null
             form.horario = ''
             form.sala = null
             form.bloco = ''
@@ -90,7 +103,7 @@ function submitForm() {
                     <v-select v-model="form.professor" :items="state.professors" label="Professor" outlined></v-select>
                 </v-col>
                 <v-col cols="12" md="6">
-                    <v-select v-model="form.curso" :items="courses" label="Curso" outlined></v-select>
+                    <v-select v-model="form.curso" :items="state.courses" label="Curso" outlined></v-select>
                 </v-col>
             </v-row>
             <v-row>
