@@ -32,4 +32,6 @@ urlpatterns = [
     path('alocacoes/<int:pk>/update/', views.alocacao_update, name='alocacao_update'),
     path('register/', views.user_register, name='user_create'),
     path('login/', views.user_login, name='user_login'),
+    path('curso/', views.curso_list_create, name='curso-list-create'),
+    path('horario/', views.horario_list_create, name='horario-create'),
 ]

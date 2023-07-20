@@ -5,13 +5,14 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 #from rest_framework.permissions import IsAuthenticated
-from .models import Professor, Sala, Alocacao, Curso
+from .models import Professor, Sala, Alocacao, Curso, Horario
 from .serializers import (
     UserSerializer,
     ProfessorSerializer,
     SalaSerializer,
     AlocacaoSerializer,
     CursoSerializer,
+    HorarioSerializer,
 )
 
 @api_view(['POST'])
@@ -139,3 +140,16 @@ def alocacao_update(request, pk):
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET', 'POST'])
+def horario_list_create(request):
+    if request.method == 'GET':
+        horarios = Horario.objects.all()
+        serializer = HorarioSerializer(horarios, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = HorarioSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -61,8 +61,7 @@ class Curso(models.Model):
 
 class Alocacao(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    # curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    curso = models.CharField(max_length=100)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     horario = models.TimeField()
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
     bloco = models.CharField(max_length=100)
@@ -70,3 +69,26 @@ class Alocacao(models.Model):
 
     def __str__(self):
         return f'{self.professor} - {self.curso}'
+
+
+class Horario(models.Model):
+    DIAS_DA_SEMANA = [
+        ('segunda', 'Segunda-feira'),
+        ('terca', 'Terça-feira'),
+        ('quarta', 'Quarta-feira'),
+        ('quinta', 'Quinta-feira'),
+        ('sexta', 'Sexta-feira'),
+    ]
+
+    HORARIOS = [
+        ('08:00', '08:00'),
+        ('10:00', '10:00'),
+        ('13:30', '13:30'),
+        ('15:30', '15:30'),
+    ]
+
+    dia_semana = models.CharField(max_length=10, choices=DIAS_DA_SEMANA)
+    horario = models.CharField(max_length=5, choices=HORARIOS)
+
+    def __str__(self):
+        return f"{self.get_dia_semana_display()} - {self.horario}"

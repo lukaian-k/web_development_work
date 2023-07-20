@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Professor, Sala, Alocacao, User
+from .models import Professor, Sala, Alocacao, User, Curso, Horario
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 
@@ -37,3 +37,10 @@ class SalaAdmin(admin.ModelAdmin):
 class AlocacaoAdmin(admin.ModelAdmin):
     pass
 
+@admin.register(Curso)
+class CursoAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Horario)
+class HorarioAdmin(admin.ModelAdmin):
+    pass

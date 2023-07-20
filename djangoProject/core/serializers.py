@@ -1,4 +1,4 @@
-from .models import Professor, Sala, Alocacao, Curso, User
+from .models import Professor, Sala, Alocacao, Curso, User, Horario
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
@@ -49,17 +49,23 @@ class SalaSerializer(serializers.ModelSerializer):
 class CursoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Curso
-        fields = ['id', 'nome']
+        fields = ['nome']
 
 class AlocacaoSerializer(serializers.ModelSerializer):
     professor = serializers.PrimaryKeyRelatedField(queryset=Professor.objects.all())
+    curso = serializers.PrimaryKeyRelatedField(queryset=Curso.objects.all())
     sala = serializers.PrimaryKeyRelatedField(queryset=Sala.objects.all())
+    id = serializers.IntegerField()
 
     class Meta:
         model = Alocacao
-        fields = ['professor', 'curso', 'horario', 'sala', 'bloco', 'semana']
+        fields = ['professor', 'curso', 'horario', 'sala', 'bloco', 'semana', 'id']
 
 
 
     #Logica 1
 
+class HorarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Horario
+        fields = '__all__'
