@@ -55,11 +55,11 @@ class AlocacaoSerializer(serializers.ModelSerializer):
     professor = serializers.PrimaryKeyRelatedField(queryset=Professor.objects.all())
     curso = serializers.PrimaryKeyRelatedField(queryset=Curso.objects.all())
     sala = serializers.PrimaryKeyRelatedField(queryset=Sala.objects.all())
-    id = serializers.IntegerField()
 
     class Meta:
         model = Alocacao
-        fields = ['professor', 'curso', 'horario', 'sala', 'bloco', 'semana', 'id']
+        fields = ['professor', 'curso', 'horario', 'sala', 'bloco', 'semana']
+        read_only_fields = ['id']
 
 
 
