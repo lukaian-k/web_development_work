@@ -6,7 +6,7 @@ import data from './data.json'
 import { ref, computed } from 'vue'
 
 import { useStore } from 'vuex'
-import router from "../router"
+import router from "../../router"
 
 const store = useStore()
 
