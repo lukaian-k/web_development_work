@@ -58,7 +58,7 @@ class AlocacaoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Alocacao
-        fields = ['professor', 'curso', 'horario', 'sala', 'bloco', 'semana']
+        fields = ['id', 'professor', 'curso', 'horario', 'sala', 'bloco', 'semana']
         read_only_fields = ['id']
 
 

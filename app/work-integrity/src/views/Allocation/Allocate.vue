@@ -58,7 +58,7 @@ let form = reactive({
 
 function submitForm() {
     state.professors.forEach((i, index) => {
-        if (i == state.professors[index]) {
+        if (form.professor == i) {
             form.professor = index + 1
         }
     })
