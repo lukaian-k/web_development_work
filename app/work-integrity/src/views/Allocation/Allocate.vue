@@ -70,8 +70,9 @@ function submitForm() {
     })
 
     state.courses.forEach((i, index) => {
-        if (i == state.courses[index]) {
+        if (form.curso == i) {
             form.curso = index + 1
+            return
         }
     })
 
