@@ -1,6 +1,6 @@
 # Trabalho de Desenvolvimento Web (UFC)
 
-Este repositório contém o código fonte do projeto XYZ, desenvolvido como parte da disciplina de Desenvolvimento Web da Universidade Federal do Ceará (UFC).
+Este repositório contém o código fonte do Trabalho de Desenvolvimento Web, desenvolvido como parte da disciplina de Desenvolvimento Web da Universidade Federal do Ceará (UFC).
 
 ## Tecnologias Utilizadas
 
@@ -59,8 +59,19 @@ O front-end estará disponível em `http://localhost:5173`, enquanto o back-end 
 
 ## Licença
 
-Este projeto está licenciado sob a [Licença XYZ](LICENSE), tornando-o livre para uso e distribuição, desde que respeitadas as condições estabelecidas na licença.
+Este projeto está licenciado sob a [MIT License](LICENSE), tornando-o livre para uso e distribuição, desde que respeitadas as condições estabelecidas na licença.
 
 ## Agradecimentos
 
 Agradecemos a todos os membros da equipe e colaboradores que contribuíram para o desenvolvimento deste projeto. Sua dedicação e esforço foram fundamentais para o seu sucesso.
+
+
+<center>
+<br>
+
+### **```Developers```**
+
+[![alanis](https://img.shields.io/badge/alanis-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AlanisOliveira)
+[![lukaian](https://img.shields.io/badge/lukaian-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/lukaian-k)
+[![fiuza](https://img.shields.io/badge/fiuza-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/fabio-fiuza)
+<hr>
